@@ -4,8 +4,8 @@ services:
   - docker
 before_install:
   - if [ $TEST_SUITE = "integration" ]; then
-      docker pull junderw/bitcoinjs-regtest-server &&
-      docker run -d -p 127.0.0.1:8080:8080 junderw/bitcoinjs-regtest-server &&
+      docker pull junderw/litecoinposjs-regtest-server &&
+      docker run -d -p 127.0.0.1:8080:8080 junderw/litecoinposjs-regtest-server &&
       docker ps -a;
     fi
 node_js:

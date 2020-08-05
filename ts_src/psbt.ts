@@ -32,7 +32,7 @@ import { Output, Transaction } from './transaction';
  */
 const DEFAULT_OPTS: PsbtOpts = {
   /**
-   * A bitcoinjs Network object. This is only used if you pass an `address`
+   * A litecoinposjs Network object. This is only used if you pass an `address`
    * parameter to addOutput. Otherwise it is not needed and can be left default.
    */
   network: btcNetwork,
@@ -736,7 +736,7 @@ const transactionFromBuffer: TransactionFromBuffer = (
 
 /**
  * This class implements the Transaction interface from bip174 library.
- * It contains a bitcoinjs-lib Transaction object.
+ * It contains a litecoinposjs-lib Transaction object.
  */
 class PsbtTransaction implements ITransaction {
   tx: Transaction;
