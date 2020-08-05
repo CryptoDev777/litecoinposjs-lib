@@ -1,18 +1,18 @@
 {
-  "name": "bitcoinjs-lib",
+  "name": "litecoinposjs-lib",
   "version": "5.1.10",
-  "description": "Client-side Bitcoin JavaScript library",
+  "description": "Client-side Litecoin-PoS JavaScript library",
   "main": "./src/index.js",
   "types": "./types/index.d.ts",
   "engines": {
     "node": ">=8.0.0"
   },
   "keywords": [
-    "bitcoinjs",
-    "bitcoin",
+    "litecoinposjs",
+    "litecoinpos",
     "browserify",
     "javascript",
-    "bitcoinjs"
+    "litecoinposjs"
   ],
   "scripts": {
     "build": "npm run clean && tsc -p ./tsconfig.json && npm run formatjs",
@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitcoinjs/bitcoinjs-lib.git"
+    "url": "https://github.com/Litecoin-PoS/litecoinposjs-lib.git"
   },
   "files": [
     "src",
