@@ -7,12 +7,12 @@ const types = require('./types');
 const bech32 = require('bech32');
 const bs58check = require('bs58check');
 const typeforce = require('typeforce');
-function fromBase58Check(address) {
+function fromBase58Check(address, network) {
   const payload = bs58check.decode(address);
   // TODO: 4.0.0, move to "toOutputScript"
   if (payload.length < 21) throw new TypeError(address + ' is too short');
   if (payload.length > 21) throw new TypeError(address + ' is too long');
-  const version = payload.readUInt16BE(0);
+  const version = payload.readUInt8(0);
   const hash = payload.slice(1);
   return { version, hash };
 }
@@ -30,7 +30,7 @@ exports.fromBech32 = fromBech32;
 function toBase58Check(hash, version) {
   typeforce(types.tuple(types.Hash160bit, types.UInt8), arguments);
   const payload = Buffer.allocUnsafe(21);
-  payload.writeUInt16BE(version, 0);
+  payload.writeUInt8(version, 0);
   hash.copy(payload, 1);
   return bs58check.encode(payload);
 }
@@ -64,12 +64,12 @@ function toOutputScript(address, network) {
   let decodeBase58;
   let decodeBech32;
   try {
-    decodeBase58 = fromBase58Check(address);
+    decodeBase58 = fromBase58Check(address, network);
   } catch (e) {}
   if (decodeBase58) {
-    if (decodeBase58.version === network.pubKeyHash)
+    if (decodeBase58.version === 50)
       return payments.p2pkh({ hash: decodeBase58.hash }).output;
-    if (decodeBase58.version === network.scriptHash)
+    if (decodeBase58.version === 110)
       return payments.p2sh({ hash: decodeBase58.hash }).output;
   } else {
     try {

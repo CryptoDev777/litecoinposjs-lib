@@ -36,7 +36,7 @@ exports.Network = typeforce.compile({
     private: typeforce.UInt32,
   },
   pubKeyHash: typeforce.UInt8,
-  scriptHash: typeforce.UInt8,
+  scriptHash: typeforce.UInt16,
   wif: typeforce.UInt8,
 });
 exports.Buffer256bit = typeforce.BufferN(32);

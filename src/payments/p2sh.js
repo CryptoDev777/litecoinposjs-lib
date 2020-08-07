@@ -64,7 +64,7 @@ function p2sh(a, opts) {
   lazy.prop(o, 'address', () => {
     if (!o.hash) return;
     const payload = Buffer.allocUnsafe(21);
-    payload.writeUInt16BE(o.network.scriptHash, 0);
+    payload.writeUInt8(o.network.scriptHash, 0);
     o.hash.copy(payload, 1);
     return bs58check.encode(payload);
   });
